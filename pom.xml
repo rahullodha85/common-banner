@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.hbc.ta</groupId>
+    <artifactId>framework-commonBannerLayer</artifactId>
+
+    <version>1.3-SNAPSHOT</version>
+    <name>framework-commonBannerLayer</name>
+
+    <properties>
+        <framework-core.version>1.18-SNAPSHOT</framework-core.version>
+        <maven-compiler-plugin.source>1.8</maven-compiler-plugin.source>
+        <maven-compiler-plugin.version>3.1</maven-compiler-plugin.version>
+        <maven-release-plugin.version>2.5.2</maven-release-plugin.version>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.hbc.ta</groupId>
+            <artifactId>framework-core</artifactId>
+            <version>${framework-core.version}</version>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+
+            <plugin>
+                <groupId>com.github.ekryd.sortpom</groupId>
+                <artifactId>sortpom-maven-plugin</artifactId>
+                <version>2.4.0</version>
+                <configuration>
+                    <predefinedSortOrder>custom_1</predefinedSortOrder>
+                    <keepBlankLines>true</keepBlankLines>
+                    <encoding>UTF-8</encoding>
+                    <indentBlankLines>false</indentBlankLines>
+                    <sortPlugins>${project.groupId},${project.artifactId}</sortPlugins>
+                    <sortProperties>true</sortProperties>
+                    <nrOfIndentSpace>4</nrOfIndentSpace>
+                </configuration>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>sort</goal>
+                        </goals>
+                        <phase>verify</phase>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <plugin>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>${maven-compiler-plugin.version}</version>
+                <configuration>
+                    <source>${maven-compiler-plugin.source}</source>
+                    <target>${maven-compiler-plugin.source}</target>
+                </configuration>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-release-plugin</artifactId>
+                <version>${maven-release-plugin.version}</version>
+                <configuration>
+                    <goals>deploy</goals>
+                    <useReleaseProfile>false</useReleaseProfile>
+                </configuration>
+            </plugin>
+
+        </plugins>
+    </build>
+
+    <scm>
+        <connection>scm:git:git@github.com:saksdirect/ta-common-banner.git</connection>
+        <developerConnection>scm:git:git@github.com:saksdirect/ta-common-banner</developerConnection>
+        <tag>HEAD</tag>
+        <url>https://github.com/saksdirect/ta-common-banner.git</url>
+    </scm>
+
+    <issueManagement>
+        <system>GitHub Issues</system>
+        <url>https://github.com/saksdirect/ta-common-banner/issues</url>
+    </issueManagement>
+
+    <ciManagement>
+        <system>Teamcity</system>
+        <url>http://10.32.150.35:8080/</url>
+    </ciManagement>
+
+    <repositories>
+        <repository>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+            <id>central</id>
+            <name>libs-release</name>
+            <url>http://sd1pgo11lx.saksdirect.com:8081/artifactory/libs-release</url>
+        </repository>
+        <repository>
+            <id>snapshots</id>
+            <name>libs-snapshot</name>
+            <url>http://sd1pgo11lx.saksdirect.com:8081/artifactory/libs-snapshot</url>
+        </repository>
+    </repositories>
+
+    <distributionManagement>
+        <repository>
+            <id>central</id>
+            <name>sd1pgo11lx-releases</name>
+            <url>http://sd1pgo11lx.saksdirect.com:8081/artifactory/libs-release-local</url>
+        </repository>
+        <snapshotRepository>
+            <id>central</id>
+            <name>sd1pgo11lx-snapshots</name>
+            <url>http://sd1pgo11lx.saksdirect.com:8081/artifactory/libs-snapshot-local</url>
+        </snapshotRepository>
+    </distributionManagement>
+
+</project>
